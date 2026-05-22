@@ -1,0 +1,246 @@
+/* =========================================================================
+   BARBER STYLE - AUTENTICAÇÃO (LOGIN E CADASTRO)
+   Design System: Glassmorphism, Dark Theme, Gold Glow Accents
+   ========================================================================= */
+
+/* Seção Principal */
+.auth-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px);
+    padding: 40px 20px;
+    background: radial-gradient(circle at center, #1f1a12 0%, #121212 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de Luz de Fundo sutil */
+.auth-section::before {
+    content: '';
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(188, 150, 72, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Container de Autenticação */
+.auth-container {
+    width: 100%;
+    max-width: 480px;
+    background: rgba(28, 28, 30, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(188, 150, 72, 0.15);
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 
+                0 0 20px rgba(188, 150, 72, 0.05);
+    padding: 35px 30px;
+    position: relative;
+    z-index: 2;
+    transition: border-color 1s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 1s cubic-bezier(0.16, 1, 0.3, 1), 
+                height 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-container:hover {
+    border-color: rgba(188, 150, 72, 0.25);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 
+                0 0 30px rgba(188, 150, 72, 0.08);
+}
+
+/* Alternadores de Abas (Tabs) */
+.auth-tabs {
+    position: relative;
+    display: flex;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    z-index: 1;
+}
+
+/* Sliding active indicator */
+.auth-tabs::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    width: calc(50% - 5px);
+    background: var(--primary);
+    border-radius: 6px;
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: -1;
+    box-shadow: 0 4px 12px rgba(188, 150, 72, 0.25);
+}
+
+.auth-tabs.cadastro-active::before {
+    transform: translateX(100%);
+}
+
+.tab-btn {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #999;
+    padding: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: color 1s cubic-bezier(0.16, 1, 0.3, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tab-btn:hover {
+    color: var(--text);
+}
+
+.tab-btn.active {
+    color: #000;
+}
+
+/* Cards de Formulário */
+.auth-card {
+    opacity: 0;
+    transform: scale(0.97) translateY(12px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 1s cubic-bezier(0.16, 1, 0.3, 1);
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.auth-card.active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    height: auto;
+    overflow: visible;
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.auth-card h3 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-bottom: 8px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.auth-subtitle {
+    font-size: 0.85rem;
+    color: #aaa;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Grupos de Formulário */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: #ccc;
+    margin-bottom: 8px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.form-group input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: var(--text);
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--primary);
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(188, 150, 72, 0.15);
+}
+
+.form-group input::placeholder {
+    color: #555;
+}
+
+/* Botões Customizados */
+.btn-full {
+    width: 100%;
+    margin-top: 15px;
+    padding: 14px 20px;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Alertas Customizados (Sucesso / Erro) */
+.auth-alerta {
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    line-height: 1.4;
+    animation: alertSlideIn 0.3s forwards;
+}
+
+.auth-alerta.erro {
+    background: rgba(239, 83, 80, 0.1);
+    color: #ef5350;
+    border: 1px solid rgba(239, 83, 80, 0.25);
+}
+
+.auth-alerta.sucesso {
+    background: rgba(102, 187, 106, 0.1);
+    color: #66bb6a;
+    border: 1px solid rgba(102, 187, 106, 0.25);
+}
+
+/* Animações */
+@keyframes alertSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 25px 20px;
+        border-radius: 8px;
+    }
+    
+    .auth-card h3 {
+        font-size: 1.4rem;
+    }
+}

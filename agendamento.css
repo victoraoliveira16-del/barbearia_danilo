@@ -1,0 +1,76 @@
+.secao-escura {
+    background: #171719;
+    min-height: 85vh;
+}
+
+.container-agenda {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 8px;
+    border-top: 4px solid var(--primary);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ccc;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    background: #2c2c2e;
+    border: 1px solid #3a3a3c;
+    color: white;
+    border-radius: 4px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.alerta {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    transition: opacity 0.5s ease, transform 0.5s ease, padding 0.5s ease, margin-bottom 0.5s ease, height 0.5s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.alerta.fade-out {
+    opacity: 0;
+    transform: translateY(-10px);
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.sucesso {
+    background: #2e7d32;
+    color: white;
+}
+
+.erro {
+    background: #c62828;
+    color: white;
+}

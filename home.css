@@ -1,0 +1,219 @@
+/* Seção de Destaque / Hero com Imagem de Fundo */
+.sobre-curto {
+    position: relative;
+    height: 85vh;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat fixed;
+    padding: 0 10%;
+    margin-top: 75px; /* Compensa o header fixo */
+    border-bottom: 2px solid rgba(188, 150, 72, 0.2);
+}
+
+.sobre-curto h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    color: var(--primary);
+    animation: fadeInDown 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.sobre-curto p {
+    font-size: 1.25rem;
+    max-width: 700px;
+    color: #f0f0f0;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 1s cubic-bezier(0.25, 1, 0.5, 1) 0.2s both;
+}
+
+.sobre-curto .botoes-home {
+    animation: fadeInUp 1s cubic-bezier(0.25, 1, 0.5, 1) 0.4s both;
+}
+
+/* Animações de Entrada */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade do Hero */
+@media (max-width: 768px) {
+    .sobre-curto {
+        height: 75vh;
+        padding: 0 5%;
+        margin-top: 110px; /* Ajusta para cabeçalho mobile maior */
+        background-attachment: scroll; /* Melhora desempenho em telas mobile */
+    }
+
+    .sobre-curto h2 {
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+    }
+
+    .sobre-curto p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+        line-height: 1.6;
+    }
+}
+
+/* Seção de Contato */
+.contato {
+    background-color: #121212;
+    padding: 80px 5%;
+}
+
+.contato-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.contato-info {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 8px;
+    min-width: 280px;
+    flex: 1;
+    max-width: 350px;
+    /* Hierarquia de sombras mais suave */
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 3px solid var(--primary);
+    /* Transição suave preparada para aceleração por hardware */
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                border-color 0.3s ease;
+}
+
+.contato-info:hover {
+    /* Leve elevação no eixo Y */
+    transform: translateY(-5px);
+    /* Sombra expande levemente acompanhando a elevação */
+    box-shadow: 0 15px 35px -5px rgba(188, 150, 72, 0.15), 
+                0 5px 15px -5px rgba(0, 0, 0, 0.4);
+    border-color: rgba(188, 150, 72, 0.3);
+}
+
+.contato-info h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.contato-info p {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Botão do WhatsApp */
+.btn-whatsapp {
+    display: inline-block;
+    background: #25d366;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-top: 15px;
+    /* Transição para micro-interações do WhatsApp */
+    transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                background-color 0.2s ease, 
+                box-shadow 0.2s ease;
+}
+
+.btn-whatsapp:hover {
+    background: #128c7e;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .contato-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contato-info {
+        width: 100%;
+    }
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: white;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    /* Transição elegante do outline */
+    transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                background-color 0.2s ease, 
+                color 0.2s ease, 
+                box-shadow 0.2s ease;
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(188, 150, 72, 0.2);
+}
+
+.btn-outline:active {
+    transform: translateY(0);
+}
+
+.botoes-home {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Estilização e Micro-interações dos Emojis */
+.home-emoji-icon {
+    font-size: 1.4rem;
+    margin-right: 10px;
+    vertical-align: middle;
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    line-height: 1;
+}
+
+.contato-info:hover .home-emoji-icon {
+    transform: scale(1.22) rotate(-8deg);
+}

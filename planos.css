@@ -1,0 +1,591 @@
+/* Layout da Grid de Planos */
+.grid-planos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+    padding: 0 2%;
+    align-items: stretch;
+}
+
+/* Card Individual de Plano */
+.plano-card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 50px 30px 40px 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                border-color 0.3s ease;
+}
+
+/* Efeito Hover do Card */
+.plano-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+    border-color: rgba(188, 150, 72, 0.3);
+}
+
+/* Destaque para o Plano Premium */
+.plano-card.premium {
+    border: 2px solid var(--primary);
+    box-shadow: 0 15px 35px -5px rgba(188, 150, 72, 0.15), 
+                0 5px 15px -5px rgba(0, 0, 0, 0.4);
+    transform: scale(1.02);
+}
+
+.plano-card.premium:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 20px 45px -10px rgba(188, 150, 72, 0.25), 
+                0 5px 20px -5px rgba(0, 0, 0, 0.5);
+}
+
+/* Tags de Destaque */
+.plano-tag {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #252528;
+    color: #fff;
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.plano-tag.premium-tag {
+    background: var(--primary);
+    color: black;
+    border-color: var(--primary);
+}
+
+/* Tipografia interna dos Planos */
+.plano-card h3 {
+    font-size: 1.6rem;
+    color: white;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.plano-card.premium h3 {
+    color: var(--primary);
+}
+
+.plano-preco {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-bottom: 20px;
+}
+
+.plano-preco .cifra {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-right: 4px;
+}
+
+.plano-preco .valor {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+}
+
+.plano-preco .periodo {
+    font-size: 1rem;
+    color: #888;
+    margin-left: 4px;
+}
+
+.plano-desc {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    min-height: 45px;
+}
+
+/* Lista de Benefícios */
+.plano-beneficios {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 35px 0;
+    text-align: left;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 25px;
+}
+
+.plano-beneficios li {
+    font-size: 0.95rem;
+    color: #ccc;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Botões do Plano */
+.btn-plano {
+    width: 100%;
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: white;
+    padding: 14px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn-plano:hover {
+    background: var(--primary);
+    color: black;
+    box-shadow: 0 0 15px rgba(188, 150, 72, 0.2);
+}
+
+.btn-premium {
+    background: var(--primary);
+    color: black;
+}
+
+.btn-premium:hover {
+    background: white;
+    border-color: white;
+    color: black;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .plano-card.premium {
+        transform: scale(1);
+    }
+    .plano-card.premium:hover {
+        transform: translateY(-8px) scale(1);
+    }
+    .grid-planos {
+        gap: 40px;
+    }
+}
+
+/* --- Modal de Pagamento --- */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: fadeIn 0.4s ease;
+}
+
+.modal-content {
+    background-color: var(--bg-card);
+    margin: 5% auto;
+    padding: 35px;
+    border: 1px solid rgba(188, 150, 72, 0.2);
+    width: 90%;
+    max-width: 800px;
+    border-radius: 16px;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    animation: slideUp 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.close-btn {
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    color: #888;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: var(--primary);
+}
+
+/* Header do Checkout */
+.checkout-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.checkout-header h3 {
+    font-size: 1.8rem;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.plano-selecionado-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(188, 150, 72, 0.1);
+    border: 1px solid rgba(188, 150, 72, 0.2);
+    padding: 8px 16px;
+    border-radius: 30px;
+}
+
+#nome-plano-checkout {
+    font-weight: 700;
+    color: var(--primary);
+}
+
+#preco-plano-checkout {
+    color: white;
+    font-weight: 600;
+}
+
+/* Corpo do Checkout (Dois Painéis) */
+.checkout-body {
+    display: flex;
+    gap: 30px;
+    min-height: 320px;
+}
+
+/* Métodos (Painel Esquerdo) */
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    padding-right: 20px;
+}
+
+.method-btn {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #ccc;
+    padding: 14px 20px;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.method-btn:hover {
+    background: rgba(188, 150, 72, 0.05);
+    border-color: rgba(188, 150, 72, 0.3);
+    color: white;
+}
+
+.method-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: black;
+}
+
+/* Painel Direito (Formulários) */
+.payment-details {
+    flex: 1.5;
+}
+
+.method-form {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.method-form.active {
+    display: block;
+}
+
+.method-form h4 {
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 8px;
+    text-align: left;
+}
+
+/* Inputs e Grupos */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    background: #252528;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: white;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.input-group input:focus {
+    border-color: var(--primary);
+}
+
+.method-form .row {
+    display: flex;
+    gap: 15px;
+}
+
+.method-form .row .input-group {
+    flex: 1;
+}
+
+/* Estilos Especiais: PIX */
+.pix-instruction, .boleto-instruction, .paypal-instruction {
+    color: #aaa;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.pix-qr-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.pix-qr-image {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.pix-copiar-container, .boleto-codigo-container {
+    display: flex;
+    gap: 10px;
+}
+
+.pix-copiar-container input, .boleto-codigo-container input {
+    flex: 2;
+    background: #252528;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #888;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    outline: none;
+}
+
+.pix-copiar-container button, .boleto-codigo-container button {
+    flex: 1;
+    padding: 10px;
+    font-size: 0.85rem;
+}
+
+/* Estilos Especiais: Boleto */
+.boleto-barcode-mock {
+    height: 60px;
+    background: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.barcode-line {
+    width: 2px;
+    height: 100%;
+    background: #000;
+}
+
+.barcode-line.w-2 { width: 4px; }
+.barcode-line.w-3 { width: 6px; }
+
+/* Estilos Especiais: PayPal */
+.paypal-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.paypal-action-btn {
+    background: #ffc439;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 25px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 196, 57, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.paypal-action-btn:hover {
+    transform: scale(1.05);
+}
+
+.pay-yellow { color: #253b80; font-style: italic; }
+.pay-blue { color: #0079c1; font-style: italic; }
+
+/* Rodapé do Checkout */
+.checkout-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 20px;
+    margin-top: 25px;
+}
+
+/* Overlay de Status (Loading e Sucesso) */
+.status-overlay {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(28, 28, 30, 0.96);
+    border-radius: 16px;
+    z-index: 2500;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.status-overlay.active {
+    display: flex;
+}
+
+.status-content {
+    max-width: 400px;
+    animation: fadeIn 0.4s ease;
+}
+
+.status-content h4 {
+    font-size: 1.4rem;
+    color: white;
+    margin: 20px 0 10px 0;
+}
+
+.status-content p {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+/* Spinner animado */
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(188, 150, 72, 0.1);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: spin 1s linear infinite;
+}
+
+/* Ícone de Sucesso */
+.success-icon {
+    display: none;
+    width: 70px;
+    height: 70px;
+    background: #2e7d32;
+    color: white;
+    font-size: 36px;
+    border-radius: 50%;
+    line-height: 70px;
+    text-align: center;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(46, 125, 50, 0.4);
+    animation: scaleIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Animações CSS */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividade do Checkout */
+@media (max-width: 768px) {
+    .checkout-body {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .payment-methods {
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: 20px;
+    }
+
+    .method-btn {
+        flex: 1;
+        min-width: 130px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .modal-content {
+        margin: 2% auto;
+        padding: 20px;
+        width: 95%;
+    }
+}
