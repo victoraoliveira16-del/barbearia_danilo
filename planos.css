@@ -589,3 +589,123 @@
         width: 95%;
     }
 }
+
+/* --- Classes de Separação de CSS e PHP (Boas Práticas) --- */
+.btn-plano-ativo {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+    background: #2e7d32 !important;
+    border-color: #2e7d32 !important;
+    color: white !important;
+}
+
+.btn-plano-indisponivel {
+    opacity: 0.4 !important;
+    cursor: not-allowed !important;
+    background: #333 !important;
+    border-color: #555 !important;
+    color: #888 !important;
+}
+
+.checkout-input-nome-group {
+    margin-bottom: 25px !important;
+}
+
+.checkout-input-nome {
+    width: 100% !important;
+    padding: 12px !important;
+    background: #252528 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: white !important;
+    border-radius: 6px !important;
+    font-size: 0.95rem !important;
+    outline: none !important;
+}
+
+.btn-copiar-checkout {
+    padding: 10px !important;
+    font-size: 0.8rem !important;
+}
+
+.btn-checkout-cancelar {
+    max-width: 150px !important;
+    background: transparent !important;
+    border: 1px solid #444 !important;
+}
+
+.btn-checkout-confirmar {
+    max-width: 250px !important;
+}
+
+.checkout-error-icon-custom {
+    display: none;
+    width: 70px;
+    height: 70px;
+    background: #c62828;
+    color: white;
+    font-size: 36px;
+    border-radius: 50%;
+    line-height: 70px;
+    text-align: center;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(198, 40, 40, 0.4);
+    animation: scaleIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-status-concluido-custom {
+    display: none;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+/* Toast Customizado Premium */
+.toast-custom {
+    position: fixed;
+    top: 90px;
+    right: 30px;
+    background: #1c1c1e;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    transform: translateY(-20px) scale(0.95);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-width: 400px;
+}
+
+.toast-custom.sucesso {
+    border-left: 4px solid var(--primary);
+}
+
+.toast-custom.erro {
+    border-left: 4px solid #c62828;
+}
+
+.toast-custom.show {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.toast-custom.hide {
+    transform: translateY(-20px) scale(0.95);
+    opacity: 0;
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.toast-icon {
+    font-size: 1.5rem;
+}
+
+.toast-text {
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
+}

@@ -74,3 +74,34 @@
     background: #c62828;
     color: white;
 }
+
+/* --- Classes de Separação de CSS - Visualizador de Preço Dinâmico --- */
+#visualizador-preco {
+    display: none !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    padding: 15px !important;
+    border-radius: 6px !important;
+    border-left: 4px solid var(--primary) !important;
+    text-align: left !important;
+    margin-bottom: 20px !important;
+}
+
+.lbl-preco {
+    color: #ccc !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+}
+
+#preco-estimado-valor {
+    color: var(--primary) !important;
+    font-size: 1.25rem !important;
+    margin-left: 8px !important;
+}
+
+#preco-estimado-status {
+    display: block !important;
+    font-size: 0.8rem !important;
+    color: #888 !important;
+    margin-top: 6px !important;
+    font-weight: 500 !important;
+}

@@ -3,7 +3,12 @@
     --bg-dark: #121212;
     --bg-card: #1c1c1e;
     --text: #ffffff;
+    --header-bg: rgba(18, 18, 18, 0.75);
+    --header-border: rgba(255, 255, 255, 0.08);
+    --nav-color: #ffffff;
+    --text-muted: #aaaaaa;
 }
+
 
 * { 
     margin: 0; 
@@ -16,6 +21,7 @@ body {
     background-color: var(--bg-dark); 
     color: var(--text); 
     scroll-behavior: smooth; 
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 header { 
@@ -23,14 +29,15 @@ header {
     justify-content: space-between; 
     align-items: center; 
     padding: 15px 5%; 
-    background: rgba(18, 18, 18, 0.75); 
+    background: var(--header-bg); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     position: fixed; 
     width: 100%; 
     top: 0; 
     z-index: 1000; 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--header-border);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
 .logo-container {
@@ -52,11 +59,11 @@ header {
 }
 
 nav a { 
-    color: white; 
+    color: var(--nav-color); 
     text-decoration: none; 
     margin-left: 20px; 
     font-weight: 500; 
-    transition: 0.3s; 
+    transition: color 0.4s ease; 
 }
 
 nav a:hover { 
@@ -102,8 +109,9 @@ section h2 {
 }
 
 section > p { 
-    color: #aaa; 
+    color: var(--text-muted); 
     margin-bottom: 40px; 
+    transition: color 0.4s ease;
 }
 
 .secao-interna {
@@ -117,5 +125,15 @@ section > p {
     }
     nav a {
         margin: 0 10px;
+    }
+}
+
+/* Suporte a Acessibilidade - Movimento Reduzido */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }

@@ -86,8 +86,11 @@
 
 /* Seção de Contato */
 .contato {
-    background-color: #121212;
+    position: relative;
+    background: linear-gradient(rgba(18, 18, 18, 0.88), rgba(18, 18, 18, 0.88)), 
+                url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat fixed;
     padding: 80px 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .contato-container {
@@ -99,29 +102,29 @@
 }
 
 .contato-info {
-    background: var(--bg-card);
+    background: rgba(28, 28, 30, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 30px;
-    border-radius: 8px;
+    border-radius: 12px;
     min-width: 280px;
     flex: 1;
     max-width: 350px;
-    /* Hierarquia de sombras mais suave */
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: 3px solid var(--primary);
-    /* Transição suave preparada para aceleração por hardware */
-    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
-                box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
-                border-color 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                border-color 0.4s ease,
+                background-color 0.4s ease;
 }
 
 .contato-info:hover {
-    /* Leve elevação no eixo Y */
-    transform: translateY(-5px);
-    /* Sombra expande levemente acompanhando a elevação */
-    box-shadow: 0 15px 35px -5px rgba(188, 150, 72, 0.15), 
-                0 5px 15px -5px rgba(0, 0, 0, 0.4);
-    border-color: rgba(188, 150, 72, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(188, 150, 72, 0.15), 
+                0 10px 25px rgba(0, 0, 0, 0.5);
+    border-color: rgba(188, 150, 72, 0.5);
+    background: rgba(28, 28, 30, 0.8);
 }
 
 .contato-info h3 {
@@ -163,6 +166,10 @@
 }
 
 @media (max-width: 768px) {
+    .contato {
+        background-attachment: scroll;
+    }
+
     .contato-container {
         flex-direction: column;
         align-items: center;

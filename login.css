@@ -43,9 +43,9 @@
     padding: 35px 30px;
     position: relative;
     z-index: 2;
-    transition: border-color 1s cubic-bezier(0.16, 1, 0.3, 1), 
-                box-shadow 1s cubic-bezier(0.16, 1, 0.3, 1), 
-                height 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .auth-container:hover {
@@ -76,7 +76,7 @@
     width: calc(50% - 5px);
     background: var(--primary);
     border-radius: 6px;
-    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     z-index: -1;
     box-shadow: 0 4px 12px rgba(188, 150, 72, 0.25);
 }
@@ -97,7 +97,7 @@
     font-weight: 600;
     cursor: pointer;
     border-radius: 6px;
-    transition: color 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -114,9 +114,9 @@
 .auth-card {
     opacity: 0;
     transform: scale(0.97) translateY(12px);
-    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 1s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                visibility 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     height: 0;
     overflow: hidden;
     pointer-events: none;
@@ -244,3 +244,107 @@
         font-size: 1.4rem;
     }
 }
+
+/* Support for Accessibility - Reduced Motion in Login */
+@media (prefers-reduced-motion: reduce) {
+    .auth-container,
+    .auth-tabs::before,
+    .tab-btn,
+    .auth-card {
+        transition: none !important;
+        transform: none !important;
+        animation: none !important;
+    }
+}
+
+/* =========================================================================
+   SOCIAL LOGIN (GOOGLE) AND DIVIDER
+   ========================================================================= */
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 22px 0 15px 0;
+    color: #777;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.auth-divider span {
+    padding: 0 15px;
+}
+
+/* Premium Google Button (Estilo do Site) */
+.btn-google {
+    width: 100% !important;
+    background: var(--primary) !important;
+    border: 1px solid var(--primary) !important;
+    color: #000000 !important;
+    padding: 14px 20px !important;
+    border-radius: 4px !important;
+    font-size: 0.95rem !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    outline: none !important;
+    user-select: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+.btn-google:hover {
+    background: #ffffff !important;
+    border-color: #ffffff !important;
+    color: #000000 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 0 15px rgba(188, 150, 72, 0.45) !important;
+}
+
+.btn-google:active {
+    transform: translateY(0) scale(0.98) !important;
+}
+
+.google-icon {
+    flex-shrink: 0 !important;
+    transition: transform 0.2s ease !important;
+}
+
+.btn-google:hover .google-icon {
+    transform: scale(1.1) rotate(-6deg) !important;
+}
+
+/* --- Classes de Separação de CSS --- */
+.auth-alerta.aviso {
+    margin-bottom: 25px !important;
+    background: rgba(204, 164, 59, 0.12) !important;
+    border: 1px solid rgba(204, 164, 59, 0.5) !important;
+    color: #e5c060 !important;
+    padding: 15px !important;
+    border-radius: 8px !important;
+    font-size: 0.95rem !important;
+    text-align: center !important;
+    font-weight: 500 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+.btn-margem-topo {
+    margin-top: 10px !important;
+}
+
+
+
+
